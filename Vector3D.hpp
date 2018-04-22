@@ -33,6 +33,10 @@ public:
 
 	double norm();
 
+	void normalize();
+
+	Vector3D normalized();
+
 	double distance(Vector3D v);
 
 	bool operator==(Vector3D v);

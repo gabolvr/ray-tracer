@@ -1,3 +1,6 @@
+#ifndef SPHERE
+#define SPHERE
+
 #include <iostream>
 #include "Vector3D.hpp"
 
@@ -16,3 +19,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& out, const Sphere& s);
+
+#endif

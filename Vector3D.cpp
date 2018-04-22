@@ -63,6 +63,17 @@ double Vector3D::norm(){
 	return sqrt(x * x + y * y + z * z);
 }
 
+void Vector3D::normalize(){
+	if (this->norm() != 0)
+		(*this) /= this->norm();
+}
+
+Vector3D Vector3D::normalized(){
+	if (this->norm() != 0)
+		return (*this) / this->norm();
+	return (*this);
+}
+
 double Vector3D::distance(Vector3D v){
 	return (*this + v).norm();
 }
