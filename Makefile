@@ -8,3 +8,7 @@ test.o: test.cpp Vector3D.hpp
 
 test: test.o Vector3D.o
 	$(CC) Vector3D.o test.o -o test
+
+clean:
+	rm -f test
+	rm -f *.o
