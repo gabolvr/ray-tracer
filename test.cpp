@@ -4,6 +4,8 @@
 #include "Ray.hpp"
 #include "Sphere.hpp"
 #include "Scene.hpp"
+#include "Light.hpp"
+#include "Camera.hpp"
 
 using namespace std;
 
@@ -47,6 +49,14 @@ int main(){
 	v2.normalize();
 	cout << v2 << " " << v2.norm() << endl;
 	v3.normalize();
-	cout << v3 << " " << v3.norm() << endl;*/
+	cout << v3 << " " << v3.norm() << endl;
+	Light l1, l2(v2);
+	cout << l1 << endl;
+	cout << l2 << endl;
+	Vector3D a(3, -3, 1), b(4, 9, 2);
+	cout << a * b << endl;*/
+	Camera cam(Vector3D(), Vector3D(0,1,0), Vector3D(0,0,1), 10, 10);
+	cout << cam << endl;
+	cout << cam.right << endl;
 	return 0;
 }

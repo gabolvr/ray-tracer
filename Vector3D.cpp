@@ -27,6 +27,10 @@ Vector3D Vector3D::operator-(Vector3D v){
 	return Vector3D(x - v.x, y - v.y, z - v.z);
 }
 
+Vector3D Vector3D::operator*(Vector3D v){
+	return Vector3D(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x);
+}
+
 Vector3D Vector3D::operator*(double k){
 	return Vector3D(x * k, y * k, z * k);
 }

@@ -12,11 +12,17 @@ Sphere.o: Sphere.cpp Sphere.hpp Vector3D.hpp
 Scene.o: Scene.cpp Scene.hpp Sphere.hpp
 	$(CC) -c Scene.cpp
 
-test.o: test.cpp Vector3D.hpp Ray.hpp Sphere.hpp Scene.hpp
+Light.o: Light.cpp Light.hpp Vector3D.hpp
+	$(CC) -c Light.cpp
+
+Camera.o: Camera.cpp Camera.hpp Vector3D.hpp
+	$(CC) -c Camera.cpp
+
+test.o: test.cpp Vector3D.hpp Ray.hpp Sphere.hpp Scene.hpp Light.hpp Camera.hpp
 	$(CC) -c test.cpp
 
-test: test.o Vector3D.o Ray.o Sphere.o Scene.o
-	$(CC) Vector3D.o Ray.o Sphere.o Scene.o test.o -o test
+test: test.o Vector3D.o Ray.o Sphere.o Scene.o Light.o Camera.o
+	$(CC) Vector3D.o Ray.o Sphere.o Scene.o Light.o Camera.o test.o -o test
 
 clean:
 	rm -f test

@@ -19,6 +19,8 @@ public:
 
 	Vector3D operator-(Vector3D v);
 
+	Vector3D operator*(Vector3D v);
+
 	Vector3D operator*(double k);
 
 	Vector3D operator/(double k);
