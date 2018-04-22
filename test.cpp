@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Vector3D.hpp"
+#include "Ray.hpp"
+#include "Sphere.hpp"
 
 using namespace std;
 
@@ -27,5 +29,12 @@ int main(){
 	cout << (v2 == v1) << endl;
 	cout << (v2 == v3) << endl;
 	cout << (v2 != v3) << endl;*/
+	Ray r1(v1, v2);
+	Sphere s1, s2(v1), s3(v1, 1), s4(v1, 1, 100, 100, 100);
+	cout << r1 << endl;
+	cout << s1 << endl;
+	cout << s2 << endl;
+	cout << s3 << endl;
+	cout << s4 << endl;
 	return 0;
 }

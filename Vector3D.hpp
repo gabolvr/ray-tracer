@@ -1,3 +1,6 @@
+#ifndef VECTOR3D
+#define VECTOR3D
+
 #include <iostream>
 
 class Vector3D {
@@ -40,3 +43,5 @@ public:
 std::ostream& operator<<(std::ostream& out, const Vector3D& v);
 
 Vector3D operator*(double k, Vector3D v);
+
+#endif
