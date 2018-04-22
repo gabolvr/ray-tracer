@@ -5,4 +5,4 @@ Ray tracing is a rendering technique for generating an image by tracing the path
 
 http://en.wikipedia.org/wiki/Ray_tracing_(graphics)
 
-Programming project for the course INF442 (*Traitement des données massives*) at École Polytechnique
+Programming project for the course INF442 (*Traitement des données massives*) at École Polytechnique.
