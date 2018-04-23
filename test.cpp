@@ -54,9 +54,16 @@ int main(){
 	cout << l1 << endl;
 	cout << l2 << endl;
 	Vector3D a(3, -3, 1), b(4, 9, 2);
-	cout << a * b << endl;*/
+	cout << a * b << endl;
 	Camera cam(Vector3D(), Vector3D(0,1,0), Vector3D(0,0,1), 10, 10);
 	cout << cam << endl;
 	cout << cam.right << endl;
+	Vector3D u(2, 3, 4), v(1, -1, 0);
+	cout << u.projection(v).z << endl;*/
+	Sphere s(Vector3D(), 1);
+	Ray r1(Vector3D(0.5,5,0), Vector3D(0,-3,0)), r2(Vector3D(0,1,-5), Vector3D(0,0,4)), r3(Vector3D(4,0,-0), Vector3D(-1,0,-1));
+	cout << r1.intersect(s) << " " << r1.intersection(s).first << " " << r1.intersection(s).second << endl;
+	cout << r2.intersect(s) << " " << r2.intersection(s).first << " " << r2.intersection(s).second << endl;
+	cout << r3.intersect(s) << " " << r3.intersection(s).first << " " << r3.intersection(s).second << endl;
 	return 0;
 }

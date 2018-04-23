@@ -63,6 +63,14 @@ void Vector3D::operator/=(double k){
 	z /= k;
 }
 
+double Vector3D::scalar(Vector3D v){
+	return x * v.x + y * v.y + z * v.z;
+}
+
+Vector3D Vector3D::projection(Vector3D v){
+	return (this->scalar(v) * v) / (v.norm() * v.norm()); 
+}
+
 double Vector3D::norm(){
 	return sqrt(x * x + y * y + z * z);
 }

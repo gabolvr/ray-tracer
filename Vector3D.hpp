@@ -33,6 +33,10 @@ public:
 
 	void operator/=(double k);
 
+	double scalar(Vector3D v);
+
+	Vector3D projection(Vector3D v);
+
 	double norm();
 
 	void normalize();
