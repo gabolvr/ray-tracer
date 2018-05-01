@@ -1,29 +1,30 @@
 CC = g++
+INC = -I include
 
-Vector3D.o: Vector3D.cpp Vector3D.hpp
-	$(CC) -c Vector3D.cpp
+Vector3D.o: src/Vector3D.cpp include/Vector3D.hpp
+	$(CC) $(INC) -c src/Vector3D.cpp -o build/Vector3D.o
 
-Ray.o: Ray.cpp Ray.hpp Vector3D.hpp
-	$(CC) -c Ray.cpp
+Ray.o: src/Ray.cpp include/Ray.hpp include/Vector3D.hpp
+	$(CC) $(INC) -c src/Ray.cpp -o build/Ray.o
 
-Sphere.o: Sphere.cpp Sphere.hpp Vector3D.hpp
-	$(CC) -c Sphere.cpp
+Sphere.o: src/Sphere.cpp include/Sphere.hpp include/Vector3D.hpp
+	$(CC) $(INC) -c src/Sphere.cpp -o build/Sphere.o
 
-Scene.o: Scene.cpp Scene.hpp Sphere.hpp
-	$(CC) -c Scene.cpp
+Scene.o: src/Scene.cpp include/Scene.hpp include/Sphere.hpp
+	$(CC) $(INC) -c src/Scene.cpp -o build/Scene.o
 
-Light.o: Light.cpp Light.hpp Vector3D.hpp
-	$(CC) -c Light.cpp
+Light.o: src/Light.cpp include/Light.hpp include/Vector3D.hpp
+	$(CC) $(INC) -c src/Light.cpp -o build/Light.o
 
-Camera.o: Camera.cpp Camera.hpp Vector3D.hpp
-	$(CC) -c Camera.cpp
+Camera.o: src/Camera.cpp include/Camera.hpp include/Vector3D.hpp
+	$(CC) $(INC) -c src/Camera.cpp -o build/Camera.o
 
-test.o: test.cpp Vector3D.hpp Ray.hpp Sphere.hpp Scene.hpp Light.hpp Camera.hpp
-	$(CC) -c test.cpp
+test.o: src/test.cpp include/Vector3D.hpp include/Ray.hpp include/Sphere.hpp include/Scene.hpp include/Light.hpp include/Camera.hpp
+	$(CC) $(INC) -c src/test.cpp -o build/test.o
 
 test: test.o Vector3D.o Ray.o Sphere.o Scene.o Light.o Camera.o
-	$(CC) Vector3D.o Ray.o Sphere.o Scene.o Light.o Camera.o test.o -o test
+	$(CC) $(INC) build/Vector3D.o build/Ray.o build/Sphere.o build/Scene.o build/Light.o build/Camera.o build/test.o -o bin/test
 
 clean:
-	rm -f test
-	rm -f *.o
+	rm -f bin/*
+	rm -f build/*.o
