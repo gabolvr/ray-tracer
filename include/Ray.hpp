@@ -11,9 +11,9 @@ public:
 
 	Ray(Vector3D p, Vector3D d);
 
-	int intersect(Sphere s);
+	bool intersect(Sphere s);
 
-	std::pair<Vector3D, Vector3D> intersection(Sphere s);
+	Vector3D intersection(Sphere s);
 };
 
 std::ostream& operator<<(std::ostream& out, const Ray& r);

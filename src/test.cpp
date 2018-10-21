@@ -6,6 +6,7 @@
 #include "Scene.hpp"
 #include "Light.hpp"
 #include "Camera.hpp"
+#include "Image.hpp"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ void testVector3D(){
 	cout << 2 * v2 << endl;
 	
 	// Norm and distance
-	cout << v2.distance(v1) << endl;
+	cout << v2.distance(v3) << endl;
 	cout << v3.norm() << " " <<  v3.norm() * v3.norm() << endl;
 	
 	// Self change operations
@@ -104,18 +105,29 @@ void testCamera(){
 void testIntersection(){
 	Sphere s(Vector3D(), 1);
 	Ray r1(Vector3D(0.5,5,0), Vector3D(0,-3,0)), r2(Vector3D(0,1,-5), Vector3D(0,0,4)), r3(Vector3D(4,0,-0), Vector3D(-1,0,-1));
-	cout << r1.intersect(s) << " " << r1.intersection(s).first << " " << r1.intersection(s).second << endl;
-	cout << r2.intersect(s) << " " << r2.intersection(s).first << " " << r2.intersection(s).second << endl;
-	cout << r3.intersect(s) << " " << r3.intersection(s).first << " " << r3.intersection(s).second << endl;
+	cout << r1.intersect(s) << " " << r1.intersection(s) << endl;
+	cout << r2.intersect(s) << " " << r2.intersection(s) << endl;
+	cout << r3.intersect(s) << " " << r3.intersection(s) << endl;
+}
+
+void testImage(){
+	Image img1, img2(200), img3(200, 300);
+	cout << img1.getWidth() << " " << img1.getHeight() << endl;
+	cout << img2.getWidth() << " " << img2.getHeight() << endl;
+	cout << img3.getWidth() << " " << img3.getHeight() << endl;
+	img1.generateFile("img1");
+	img2.generateFile("img2");
+	img3.generateFile("img3");
 }
 
 int main(){
-	testVector3D();
-	testRay();
-	testSphere();
-	testScene();
-	testLight();
-	testCamera();
-	testIntersection();
+	// testVector3D();
+	// testRay();
+	//testSphere();
+	// testScene();
+	// testLight();
+	// testCamera();
+	// testIntersection();
+	testImage();
 	return 0;
 }

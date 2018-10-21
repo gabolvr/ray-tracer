@@ -18,7 +18,7 @@ Sphere::Sphere(Vector3D c, double r){
 	colorR = colorG = colorB = 255;
 }
 
-Sphere::Sphere(Vector3D c, double r, int cR, int cG, int cB){
+Sphere::Sphere(Vector3D c, double r, uint8_t cR, uint8_t cG, uint8_t cB){
 	center = c;
 	radius = r;
 	colorR = cR;
@@ -27,6 +27,6 @@ Sphere::Sphere(Vector3D c, double r, int cR, int cG, int cB){
 }
 
 std::ostream& operator<<(std::ostream& out, const Sphere& s){
-	out << "Sphere[" << s.center << "; " << s.radius << "; RGB(" << s.colorR << ", " << s.colorG << ", " << s.colorB << ")]";
+	out << "Sphere[" << s.center << "; " << s.radius << "; RGB(" << (int) s.colorR << ", " << (int) s.colorG << ", " << (int) s.colorB << ")]";
 	return out;
 }

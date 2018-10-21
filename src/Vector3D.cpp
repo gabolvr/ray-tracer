@@ -87,7 +87,7 @@ Vector3D Vector3D::normalized(){
 }
 
 double Vector3D::distance(Vector3D v){
-	return (*this + v).norm();
+	return (*this - v).norm();
 }
 
 bool Vector3D::operator==(Vector3D v){
