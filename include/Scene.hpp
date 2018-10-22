@@ -1,14 +1,15 @@
+#ifndef SCENE
+#define SCENE
+
 #include <iostream>
 #include <vector>
 #include "Sphere.hpp"
 
 class Scene{
 
-private:
-
-	std::vector<Sphere> set;
-
 public:
+	
+	std::vector<Sphere> set;
 	Scene();
 	Scene(Sphere s);
 	Scene(std::vector<Sphere> s);
@@ -18,3 +19,5 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const Scene& s);
 
 };
+
+#endif

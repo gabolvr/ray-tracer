@@ -6,7 +6,11 @@ Ray::Ray(Vector3D p, Vector3D d){
 	direction = d.normalized();
 }
 
-bool Ray::intersect(Sphere s){
+void Ray::setDirection(Vector3D d){
+	direction = d.normalized();
+}
+
+bool Ray::intersect(Sphere& s){
 
 	// Sphere equation: || x - center || = radius
 	// Line equation: x = point + k * direction
@@ -48,7 +52,7 @@ bool Ray::intersect(Sphere s){
 	return intersection;
 }*/
 
-Vector3D Ray::intersection(Sphere s){
+Vector3D Ray::intersection(Sphere& s){
 
 	// Sphere equation: || x - center || = radius
 	// Line equation: x = point + k * direction

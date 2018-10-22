@@ -120,6 +120,25 @@ void testImage(){
 	img3.generateFile("img3");
 }
 
+void testImageFromScene(){
+	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 10, 10);
+	Sphere s(Vector3D(10,0,0), 4.0, 255, 255, 255);
+	Scene scene(s);
+	cam.getImageFromScene(scene);
+	cam.image.generateFile("image-from-scene");
+}
+
+void testEyeImage(){
+	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 6, 6);
+	Sphere s(Vector3D(14,0,0), 4.0, 255, 255, 255);
+	Scene scene(s);
+	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, 0, 0, 255));
+	scene.addSphere(Sphere(Vector3D(5,0,0), 0.3, 0, 0, 0));
+	scene.addSphere(Sphere(Vector3D(4,0.18,0.18), 0.08, 255, 255, 255));
+	cam.getImageFromScene(scene);
+	cam.image.generateFile("eye");
+}
+
 int main(){
 	// testVector3D();
 	// testRay();
@@ -128,6 +147,8 @@ int main(){
 	// testLight();
 	// testCamera();
 	// testIntersection();
-	testImage();
+	// testImage();
+	// testImageFromScene();
+	testEyeImage();
 	return 0;
 }

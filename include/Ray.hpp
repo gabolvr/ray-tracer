@@ -1,3 +1,6 @@
+#ifndef RAY
+#define RAY
+
 #include <iostream>
 #include <utility>
 #include "Vector3D.hpp"
@@ -11,9 +14,13 @@ public:
 
 	Ray(Vector3D p, Vector3D d);
 
-	bool intersect(Sphere s);
+	void setDirection(Vector3D d);
 
-	Vector3D intersection(Sphere s);
+	bool intersect(Sphere& s);
+
+	Vector3D intersection(Sphere& s);
 };
 
 std::ostream& operator<<(std::ostream& out, const Ray& r);
+
+#endif
