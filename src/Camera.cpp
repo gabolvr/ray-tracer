@@ -35,7 +35,7 @@ void Camera::getImageFromScene(Scene& scene){
 			
 			for(Sphere s : scene.set){
 				if(ray.intersect(s))
-					image.setPixelColor(i, j, s.colorR, s.colorG, s.colorB);
+					image.setPixelColor(i, j, s.color);
 			}
 		}
 	}

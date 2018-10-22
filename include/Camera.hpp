@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Vector3D.hpp"
+#include "Color.hpp"
 #include "Image.hpp"
 #include "Scene.hpp"
 #include "Ray.hpp"

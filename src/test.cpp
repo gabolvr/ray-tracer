@@ -122,7 +122,7 @@ void testImage(){
 
 void testImageFromScene(){
 	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 10, 10);
-	Sphere s(Vector3D(10,0,0), 4.0, 255, 255, 255);
+	Sphere s(Vector3D(10,0,0), 4.0, 1, 1, 1);
 	Scene scene(s);
 	cam.getImageFromScene(scene);
 	cam.image.generateFile("image-from-scene");
@@ -130,13 +130,14 @@ void testImageFromScene(){
 
 void testEyeImage(){
 	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 6, 6);
-	Sphere s(Vector3D(14,0,0), 4.0, 255, 255, 255);
+	Sphere s(Vector3D(14,0,0), 4.0, 1, 1, 1);
 	Scene scene(s);
-	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, 0, 0, 255));
+	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, 0, 0, 0.6));
 	scene.addSphere(Sphere(Vector3D(5,0,0), 0.3, 0, 0, 0));
-	scene.addSphere(Sphere(Vector3D(4,0.18,0.18), 0.08, 255, 255, 255));
+	scene.addSphere(Sphere(Vector3D(4,0.18,0.18), 0.08, 1, 1, 1));
 	cam.getImageFromScene(scene);
 	cam.image.generateFile("eye");
+	cout << scene << endl;
 }
 
 int main(){

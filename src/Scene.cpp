@@ -29,6 +29,6 @@ std::ostream& operator<<(std::ostream& out, const Scene& s){
 		if (i < s.set.size() - 1)
 			out << ";";
 	}
-	out << "}";
+	out << std::endl << "}";
 	return out;
 }

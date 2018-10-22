@@ -5,12 +5,13 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include "Color.hpp"
 
 class Image {
 
 private:
 	int width, height;
-	std::vector<std::vector<uint8_t> > colorR, colorG, colorB;
+	std::vector<std::vector<Color> > color;
 
 public:
 	
@@ -26,7 +27,7 @@ public:
 
 	int getHeight();
 
-	void setPixelColor(int i, int j, uint8_t R, uint8_t G, uint8_t B);
+	void setPixelColor(int i, int j, Color c);
 
 	void generateFile(std::string name);
 

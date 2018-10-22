@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Vector3D.hpp"
+#include "Color.hpp"
 
 class Sphere{
 
@@ -10,12 +11,13 @@ public:
 
 	Vector3D center;
 	double radius;
-	uint8_t colorR, colorG, colorB;
+	Color color;
 
 	Sphere();
 	Sphere(Vector3D c);
 	Sphere(Vector3D c, double r);
-	Sphere(Vector3D c, double r, uint8_t cR, uint8_t cG, uint8_t cB);
+	Sphere(Vector3D c, double r, double R, double G, double B);
+	Sphere(Vector3D c, double r, Color col);
 };
 
 std::ostream& operator<<(std::ostream& out, const Sphere& s);
