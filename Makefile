@@ -32,3 +32,5 @@ test: test.o Vector3D.o Ray.o Sphere.o Scene.o Light.o Camera.o Image.o
 clean:
 	rm -f bin/*
 	rm -f build/*.o
+	rm -f test/*
+
