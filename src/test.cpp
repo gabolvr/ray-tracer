@@ -174,7 +174,7 @@ void testEyePerspective(){
 	Sphere s(Vector3D(14,0,0), 4.0, Color(1), Color(0.3), Color(0.5), 10);
 	Scene scene(s);
 	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, Color(0,0,0.5), Color(0.5), Color(0,0,0.5), 10));
-	scene.addSphere(Sphere(Vector3D(5,0,0), 0.3, Color(0), Color(0.6), Color(0.1), 5));
+	scene.addSphere(Sphere(Vector3D(5,0,0), 0.3, Color(0), Color(0.6), Color(0.175), 5));
 	vector<Light> lights;
 	lights.push_back(Light(Vector3D(0,5,2), Color(1)));
 	cam1.getImageFromScene(scene, lights);

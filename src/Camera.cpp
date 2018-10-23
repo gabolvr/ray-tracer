@@ -12,8 +12,8 @@ Camera::Camera(Vector3D e, Vector3D t, Vector3D u, double w, double h){
 
 	right = (target - eye) * up;
 	right.normalize();
-	pixelsW = 600;
-	pixelsH = 600;
+	pixelsW = 2000;
+	pixelsH = 2000;
 
 	image.resize(pixelsW, pixelsH);
 }
