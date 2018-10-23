@@ -133,7 +133,7 @@ void testImageFromScene(){
 }
 
 void testImageDecompose(){
-	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 10, 10);
+	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 6, 6);
 	Sphere s0(Vector3D(10,0,0), 4.0, Color(0,0,0.5), Color(0.5), Color(0,0,0.5), 5);
 	Sphere s1(Vector3D(10,0,0), 4.0, Color(0,0,0.5), Color(0), Color(0), 5);
 	Sphere s2(Vector3D(10,0,0), 4.0, Color(0), Color(0.5), Color(0), 5);
@@ -193,8 +193,8 @@ int main(){
 	// testIntersection();
 	// testImage();
 	// testImageFromScene();
-	// testImageDecompose();
+	testImageDecompose();
 	// testEyeImage();
-	testEyePerspective();
+	// testEyePerspective();
 	return 0;
 }
