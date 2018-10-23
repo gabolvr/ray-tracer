@@ -8,5 +8,10 @@ Ray tracing is a rendering technique for generating an image by tracing the path
 
 http://en.wikipedia.org/wiki/Ray_tracing_(graphics)
 
+### Phong reflection model
+The color of each point on a sphere was calculated using the *Phong reflection model*, which uses a combination of the diffuse reflection and the specular reflection of the surface.
+
+![Ambient](image/ambient.ppm =200x200)
+
 ## Source
 Programming project for the course INF442 (*Traitement des données massives*) at École Polytechnique.
