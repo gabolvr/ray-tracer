@@ -3,34 +3,64 @@
 Sphere::Sphere(){
 	center = Vector3D();
 	radius = 1;
-	color = Color(1.0);
+
+	ambient = Color(1);
+	specular = Color(0.2);
+	diffuse = Color(0.5);
+	shininess = 10;
 }
 
 Sphere::Sphere(Vector3D c){
 	center = c;
 	radius = 1;
-	color = Color(1.0);
+
+	ambient = Color(1);
+	specular = Color(0.2);
+	diffuse = Color(0.5);
+	shininess = 10;
 }
 
 Sphere::Sphere(Vector3D c, double r){
 	center = c;
 	radius = r;
-	color = Color(1.0);
+
+	ambient = Color(1);
+	specular = Color(0.2);
+	diffuse = Color(0.5);
+	shininess = 10;
 }
 
-Sphere::Sphere(Vector3D c, double r, double R, double G, double B){
+Sphere::Sphere(Vector3D c, double r, Color color){
 	center = c;
 	radius = r;
-	color = Color(R, G, B);
+
+	ambient = color;
+	specular = Color(0.2);
+	diffuse = color * (0.5);
+	shininess = 10;
 }
 
-Sphere::Sphere(Vector3D c, double r, Color col){
+Sphere::Sphere(Vector3D c, double r, Color amb, Color spec, Color diff){
 	center = c;
 	radius = r;
-	color = col;
+
+	ambient = amb;
+	specular = spec;
+	diffuse = diff;
+	shininess = 10;
+}
+
+Sphere::Sphere(Vector3D c, double r, Color amb, Color spec, Color diff, int s){
+	center = c;
+	radius = r;
+
+	ambient = amb;
+	specular = spec;
+	diffuse = diff;
+	shininess = s;
 }
 
 std::ostream& operator<<(std::ostream& out, const Sphere& s){
-	out << "Sphere[" << s.center << "; " << s.radius << "; " << s.color << "]";
+	out << "Sphere[" << s.center << "; " << s.radius << "; amb " << s.ambient << "; spec " << s.specular << "; diff " << s.diffuse << "; " << s.shininess << "]";
 	return out;
 }

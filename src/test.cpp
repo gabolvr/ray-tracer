@@ -122,22 +122,65 @@ void testImage(){
 
 void testImageFromScene(){
 	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 10, 10);
-	Sphere s(Vector3D(10,0,0), 4.0, 1, 1, 1);
+	Sphere s(Vector3D(10,0,0), 4.0, Color(0,0,0.5), Color(0.5), Color(0,0,0.5), 5);
 	Scene scene(s);
-	cam.getImageFromScene(scene);
+	vector<Light> lights;
+	lights.push_back(Light(Vector3D(0,5,2), Color(1)));
+	cam.getImageFromScene(scene, lights);
 	cam.image.generateFile("image-from-scene");
+	cout << scene << endl;
+	cout << lights[0] << endl;
+}
+
+void testImageDecompose(){
+	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 10, 10);
+	Sphere s0(Vector3D(10,0,0), 4.0, Color(0,0,0.5), Color(0.5), Color(0,0,0.5), 5);
+	Sphere s1(Vector3D(10,0,0), 4.0, Color(0,0,0.5), Color(0), Color(0), 5);
+	Sphere s2(Vector3D(10,0,0), 4.0, Color(0), Color(0.5), Color(0), 5);
+	Sphere s3(Vector3D(10,0,0), 4.0, Color(0), Color(0), Color(0,0,0.5), 5);
+	Scene composition(s0), ambient(s1), specular(s2), diffuse(s3);
+	vector<Light> lights;
+	lights.push_back(Light(Vector3D(0,5,2), Color(1)));
+	
+	cam.getImageFromScene(composition, lights);
+	cam.image.generateFile("composition");
+
+	cam.getImageFromScene(ambient, lights);
+	cam.image.generateFile("ambient");
+
+	cam.getImageFromScene(specular, lights);
+	cam.image.generateFile("specular");
+
+	cam.getImageFromScene(diffuse, lights);
+	cam.image.generateFile("diffuse");	
 }
 
 void testEyeImage(){
 	Camera cam(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 6, 6);
-	Sphere s(Vector3D(14,0,0), 4.0, 1, 1, 1);
+	Sphere s(Vector3D(14,0,0), 4.0, Color(1), Color(0.3), Color(0.5), 10);
 	Scene scene(s);
-	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, 0, 0, 0.6));
-	scene.addSphere(Sphere(Vector3D(5,0,0), 0.3, 0, 0, 0));
-	scene.addSphere(Sphere(Vector3D(4,0.18,0.18), 0.08, 1, 1, 1));
-	cam.getImageFromScene(scene);
+	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, Color(0,0,0.5), Color(0.5), Color(0,0,0.5), 10));
+	scene.addSphere(Sphere(Vector3D(5,0,0), 0.3, Color(0), Color(0.6), Color(0.1), 5));
+	vector<Light> lights;
+	lights.push_back(Light(Vector3D(0,5,2), Color(1)));
+	cam.getImageFromScene(scene, lights);
 	cam.image.generateFile("eye");
 	cout << scene << endl;
+}
+
+void testEyePerspective(){
+	Camera cam1(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 6, 6);
+	Camera cam2(Vector3D(2,0,8), Vector3D(5,0,5), Vector3D(0,1,0), 6, 6);
+	Sphere s(Vector3D(14,0,0), 4.0, Color(1), Color(0.3), Color(0.5), 10);
+	Scene scene(s);
+	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, Color(0,0,0.5), Color(0.5), Color(0,0,0.5), 10));
+	scene.addSphere(Sphere(Vector3D(5,0,0), 0.3, Color(0), Color(0.6), Color(0.1), 5));
+	vector<Light> lights;
+	lights.push_back(Light(Vector3D(0,5,2), Color(1)));
+	cam1.getImageFromScene(scene, lights);
+	cam1.image.generateFile("eye1");
+	cam2.getImageFromScene(scene, lights);
+	cam2.image.generateFile("eye2");
 }
 
 int main(){
@@ -150,6 +193,8 @@ int main(){
 	// testIntersection();
 	// testImage();
 	// testImageFromScene();
-	testEyeImage();
+	// testImageDecompose();
+	// testEyeImage();
+	testEyePerspective();
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include "Color.hpp"
+#include <algorithm>
 
 Color::Color(){
 	R = 0;
@@ -19,33 +20,33 @@ Color::Color(double R, double G, double B){
 }
 
 Color Color::operator*(Color c){
-	return Color(R * c.R, G * c.G, B * c.B);
+	return Color(std::max(R * c.R, 0.0), std::max(G * c.G, 0.0), std::max(B * c.B, 0.0));
 }
 
 Color Color::operator*(double k){
-	return Color(R * k, G * k, B * k);
+	return Color(std::max(R * k, 0.0), std::max(G * k, 0.0), std::max(B * k, 0.0));
 }
 
 Color Color::operator+(Color c){
-	return Color(R + c.R, G + c.G, B + c.B);
+	return Color(std::min(R + c.R, 1.0), std::min(G + c.G, 1.0), std::min(B + c.B, 1.0));
 }
 
 void Color::operator*=(Color c){
-	R *= c.R;
-	G *= c.G;
-	B *= c.B;
+	R = std::max(R * c.R, 0.0);
+	G = std::max(G * c.G, 0.0);
+	B = std::max(B * c.B, 0.0);
 }
 
 void Color::operator*=(double k){
-	R *= k;
-	G *= k;
-	B *= k;
+	R = std::max(R * k, 0.0);
+	G = std::max(G * k, 0.0);
+	B = std::max(B * k, 0.0);
 }
 
 void Color::operator+=(Color c){
-	R += c.R;
-	G += c.G;
-	B += c.B;
+	R = std::min(R + c.R, 1.0);
+	G = std::min(G + c.G, 1.0);
+	B = std::min(B + c.B, 1.0);
 }
 
 std::ostream& operator<<(std::ostream& out, const Color& c) {
@@ -57,5 +58,5 @@ std::ostream& operator<<(std::ostream& out, const Color& c) {
 }
 
 Color operator*(double k, Color c){
-	return Color(c.R * k, c.G * k, c.B * k);
+	return Color(std::max(c.R * k, 0.0), std::max(c.G * k, 0.0), std::max(c.B * k, 0.0));
 }

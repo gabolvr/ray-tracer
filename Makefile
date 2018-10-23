@@ -23,7 +23,7 @@ Light.o: src/Light.cpp include/Light.hpp include/Vector3D.hpp
 Image.o: src/Image.cpp include/Image.hpp include/Color.hpp
 	$(CC) $(CFLAGS) $(INC) -c src/Image.cpp -o build/Image.o
 
-Camera.o: src/Camera.cpp include/Camera.hpp include/Vector3D.hpp include/Color.hpp include/Image.hpp include/Scene.hpp include/Ray.hpp
+Camera.o: src/Camera.cpp include/Camera.hpp include/Vector3D.hpp include/Color.hpp include/Image.hpp include/Scene.hpp include/Ray.hpp include/Light.hpp include/Sphere.hpp
 	$(CC) $(CFLAGS) $(INC) -c src/Camera.cpp -o build/Camera.o
 
 test.o: src/test.cpp include/Vector3D.hpp include/Color.hpp include/Ray.hpp include/Sphere.hpp include/Scene.hpp include/Light.hpp include/Camera.hpp
