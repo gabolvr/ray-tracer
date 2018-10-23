@@ -169,8 +169,8 @@ void testEyeImage(){
 }
 
 void testEyePerspective(){
-	Camera cam1(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 6, 6);
-	Camera cam2(Vector3D(2,0,8), Vector3D(5,0,5), Vector3D(0,1,0), 6, 6);
+	Camera cam1(Vector3D(), Vector3D(5,0,0), Vector3D(0,1,0), 5, 5);
+	Camera cam2(Vector3D(2,0,8), Vector3D(5,0,5), Vector3D(0,1,0), 5, 5);
 	Sphere s(Vector3D(14,0,0), 4.0, Color(1), Color(0.3), Color(0.5), 10);
 	Scene scene(s);
 	scene.addSphere(Sphere(Vector3D(8,0,0), 1.5, Color(0,0,0.5), Color(0.5), Color(0,0,0.5), 10));
@@ -193,8 +193,8 @@ int main(){
 	// testIntersection();
 	// testImage();
 	// testImageFromScene();
-	testImageDecompose();
+	// testImageDecompose();
 	// testEyeImage();
-	// testEyePerspective();
+	testEyePerspective();
 	return 0;
 }
