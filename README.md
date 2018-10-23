@@ -18,9 +18,9 @@ The color of each point on a sphere was calculated using the *Phong reflection m
 
 ## Results
 
-![Eye Frontal](image/eye1.png)
+![Eye Frontal](image/eye1-small.png)
 
-![Eye Side](image/eye2.png)
+![Eye Side](image/eye2-small.png)
 
 
 ## Source
