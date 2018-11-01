@@ -25,7 +25,7 @@ public:
 	void getImageFromScene(Scene& scene, std::vector<Light>& lights);
 
 private:
-	Color sphereColor(Sphere& sphere, Vector3D& point, std::vector<Light>& lights);
+	Color sphereColor(Sphere& sphere, Vector3D& point, Scene& scene, std::vector<Light>& lights);
 	Color sphereIlumination(Sphere& sphere, Vector3D& point, Light& light);
 };
 

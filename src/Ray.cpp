@@ -18,13 +18,14 @@ bool Ray::intersect(Sphere& s){
 
 	double delta = direction.scalar(s.center - point) * direction.scalar(s.center - point) - (s.center - point).scalar(s.center - point) + s.radius * s.radius;
 
-	/*if(delta < 0)
-		return 0;
-	else if(delta == 0)
-		return 1;
-	return 2;*/
+	if(delta > 0){
+		double k1 = direction.scalar(s.center - point) + sqrt(delta);
+		double k2 = direction.scalar(s.center - point) - sqrt(delta);
 
-	return (delta > 0);
+		return (k1 > 0 || k2 > 0);
+	}
+
+	return false;
 }
 
 /*std::pair<Vector3D, Vector3D> Ray::intersection(Sphere s){
@@ -67,6 +68,11 @@ Vector3D Ray::intersection(Sphere& s){
 		double k2 = direction.scalar(s.center - point) - sqrt(delta);
 		intersection1 = point + k1 * direction;
 		intersection2 = point + k2 * direction;
+
+		if(k1 > 0 && k2 < 0)
+			return intersection1;
+		else if(k1 < 0 && k2 > 0)
+			return intersection2;
 
 		return point.distance(intersection1) < point.distance(intersection1) ? intersection1 : intersection2;
 	}

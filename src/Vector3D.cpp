@@ -86,15 +86,15 @@ Vector3D Vector3D::normalized(){
 	return (*this);
 }
 
-double Vector3D::distance(Vector3D v){
+double Vector3D::distance(Vector3D& v){
 	return (*this - v).norm();
 }
 
-bool Vector3D::operator==(Vector3D v){
+bool Vector3D::operator==(Vector3D& v){
 	return this->x == v.x && this->y == v.y && this->z == z;
 }
 
-bool Vector3D::operator!=(Vector3D v){
+bool Vector3D::operator!=(Vector3D& v){
 	return this->x != v.x || this->y != v.y || this->z != z;
 }
 

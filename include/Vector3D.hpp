@@ -43,11 +43,11 @@ public:
 
 	Vector3D normalized();
 
-	double distance(Vector3D v);
+	double distance(Vector3D& v);
 
-	bool operator==(Vector3D v);
+	bool operator==(Vector3D& v);
 
-	bool operator!=(Vector3D v);
+	bool operator!=(Vector3D& v);
 };
 
 std::ostream& operator<<(std::ostream& out, const Vector3D& v);

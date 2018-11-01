@@ -34,23 +34,45 @@ void Camera::getImageFromScene(Scene& scene, std::vector<Light>& lights){
 		for(int j = 0; j < pixelsW; j++, rayDirection += stepRight){
 			ray.setDirection(rayDirection);
 			
+			double closestSphereDistance = -1.0;
+			bool intersected = false;
+			Sphere closestSphere;
+			Vector3D closestIntersection;
+
 			for(Sphere s : scene.set){
 				if(ray.intersect(s)){
 					Vector3D intersection = ray.intersection(s);
-					image.setPixelColor(i, j, sphereColor(s, intersection, lights));
+					
+					if((!intersected || closestSphereDistance > eye.distance(intersection)) && rayDirection.scalar(intersection - eye) > 0){
+						//image.setPixelColor(i, j, sphereColor(s, intersection, lights));
+						closestSphereDistance = eye.distance(intersection);
+						closestSphere = s;
+						closestIntersection = intersection;
+						intersected = true;
+					}
 				}
 			}
+
+			if(intersected)
+				image.setPixelColor(i, j, sphereColor(closestSphere, closestIntersection, scene, lights));
+
 		}
 	}
 }
 
-Color Camera::sphereColor(Sphere& sphere, Vector3D& point, std::vector<Light>& lights){
+Color Camera::sphereColor(Sphere& sphere, Vector3D& point, Scene& scene, std::vector<Light>& lights){
 	Color ambientLight(0.5);
 
 	Color totalIlumination = sphere.ambient * ambientLight;
 
-	for(Light l : lights)
+	bool shadow = false;
+
+	for(Light l : lights){
+		/*for(Sphere s : scene.set){
+			if()
+		}*/
 		totalIlumination += sphereIlumination(sphere, point, l);
+	}
 
 	return totalIlumination;
 }
