@@ -49,6 +49,14 @@ void Color::operator+=(Color c){
 	B = std::min(B + c.B, 1.0);
 }
 
+bool Color::operator==(Color& c){
+	return this->R == c.R && this->G == c.G && this->B == c.B;
+}
+
+bool Color::operator!=(Color& c){
+	return this->R != c.R || this->G != c.G || this->B != c.B;
+}
+
 std::ostream& operator<<(std::ostream& out, const Color& c) {
  
     out << "Color(R " << c.R  << ", G " << c.G << ", B " << c.B << ")";

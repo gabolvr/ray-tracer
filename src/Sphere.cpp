@@ -60,6 +60,16 @@ Sphere::Sphere(Vector3D c, double r, Color amb, Color spec, Color diff, int s){
 	shininess = s;
 }
 
+bool Sphere::operator==(Sphere& s){
+	return this->center == s.center && this->radius == s.radius && this->ambient == s.ambient && this->specular == s.specular
+		&& this->diffuse == s.diffuse && this->shininess == s.shininess;
+}
+
+bool Sphere::operator!=(Sphere& s){
+	return this->center != s.center || this->radius != s.radius || this->ambient != s.ambient || this->specular != s.specular
+		|| this->diffuse != s.diffuse || this->shininess != s.shininess;
+}
+
 std::ostream& operator<<(std::ostream& out, const Sphere& s){
 	out << "Sphere[" << s.center << "; " << s.radius << "; amb " << s.ambient << "; spec " << s.specular << "; diff " << s.diffuse << "; " << s.shininess << "]";
 	return out;

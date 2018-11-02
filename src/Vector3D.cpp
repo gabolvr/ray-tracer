@@ -91,11 +91,11 @@ double Vector3D::distance(Vector3D& v){
 }
 
 bool Vector3D::operator==(Vector3D& v){
-	return this->x == v.x && this->y == v.y && this->z == z;
+	return this->x == v.x && this->y == v.y && this->z == v.z;
 }
 
 bool Vector3D::operator!=(Vector3D& v){
-	return this->x != v.x || this->y != v.y || this->z != z;
+	return this->x != v.x || this->y != v.y || this->z != v.z;
 }
 
 std::ostream& operator<<(std::ostream& out, const Vector3D& v) {

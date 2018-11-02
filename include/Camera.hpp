@@ -26,6 +26,7 @@ public:
 
 private:
 	Color sphereColor(Sphere& sphere, Vector3D& point, Scene& scene, std::vector<Light>& lights);
+	Color sphereColorShadow(Sphere& sphere, Vector3D& point, Scene& scene, std::vector<Light>& lights);
 	Color sphereIlumination(Sphere& sphere, Vector3D& point, Light& light);
 };
 

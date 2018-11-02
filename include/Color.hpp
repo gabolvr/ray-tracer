@@ -25,6 +25,10 @@ public:
 
 	void operator+=(Color c);
 
+	bool operator==(Color& c);
+
+	bool operator!=(Color& c);
+
 };
 
 std::ostream& operator<<(std::ostream& out, const Color& c);

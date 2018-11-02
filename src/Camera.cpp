@@ -12,8 +12,8 @@ Camera::Camera(Vector3D e, Vector3D t, Vector3D u, double w, double h){
 
 	right = (target - eye) * up;
 	right.normalize();
-	pixelsW = 2000;
-	pixelsH = 2000;
+	pixelsW = 3000;
+	pixelsH = 3000;
 
 	image.resize(pixelsW, pixelsH);
 }
@@ -43,8 +43,7 @@ void Camera::getImageFromScene(Scene& scene, std::vector<Light>& lights){
 				if(ray.intersect(s)){
 					Vector3D intersection = ray.intersection(s);
 					
-					if((!intersected || closestSphereDistance > eye.distance(intersection)) && rayDirection.scalar(intersection - eye) > 0){
-						//image.setPixelColor(i, j, sphereColor(s, intersection, lights));
+					if(!intersected || closestSphereDistance > eye.distance(intersection)){
 						closestSphereDistance = eye.distance(intersection);
 						closestSphere = s;
 						closestIntersection = intersection;
@@ -53,8 +52,10 @@ void Camera::getImageFromScene(Scene& scene, std::vector<Light>& lights){
 				}
 			}
 
-			if(intersected)
-				image.setPixelColor(i, j, sphereColor(closestSphere, closestIntersection, scene, lights));
+			if(intersected){
+				// image.setPixelColor(i, j, sphereColor(closestSphere, closestIntersection, scene, lights));
+				image.setPixelColor(i, j, sphereColorShadow(closestSphere, closestIntersection, scene, lights));
+			}
 
 		}
 	}
@@ -65,13 +66,37 @@ Color Camera::sphereColor(Sphere& sphere, Vector3D& point, Scene& scene, std::ve
 
 	Color totalIlumination = sphere.ambient * ambientLight;
 
-	bool shadow = false;
 
 	for(Light l : lights){
-		/*for(Sphere s : scene.set){
-			if()
-		}*/
 		totalIlumination += sphereIlumination(sphere, point, l);
+	}
+
+	return totalIlumination;
+}
+
+Color Camera::sphereColorShadow(Sphere& sphere, Vector3D& point, Scene& scene, std::vector<Light>& lights){
+	Color ambientLight(0.5);
+
+	Color totalIlumination = sphere.ambient * ambientLight;
+
+
+	for(Light l : lights){
+		
+		Ray ray(l.source, point - l.source);
+		bool shadow = false;
+
+		for(Sphere s : scene.set){
+			if(sphere != s && ray.intersect(s)){
+				Vector3D intersection = ray.intersection(s);
+				if(l.source.distance(intersection) < l.source.distance(point)){
+					shadow = true;
+					break;
+				}
+			}
+		}
+
+		if(!shadow)
+			totalIlumination += sphereIlumination(sphere, point, l);
 	}
 
 	return totalIlumination;

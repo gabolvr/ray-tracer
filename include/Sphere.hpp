@@ -22,6 +22,9 @@ public:
 	Sphere(Vector3D c, double r, Color color);
 	Sphere(Vector3D c, double r, Color amb, Color spec, Color diff);
 	Sphere(Vector3D c, double r, Color amb, Color spec, Color diff, int s);
+
+	bool operator==(Sphere& s);
+	bool operator!=(Sphere& s);
 };
 
 std::ostream& operator<<(std::ostream& out, const Sphere& s);
